@@ -9,7 +9,8 @@ VARIABLE_REGEXP_SEARCH_PATTERN = '<{{(?P<variable_name>\w+)}}>'
 VARIABLE_REGEXP_SUBSTITUE_PATTERN = lambda variable_name: '<{{' + variable_name + '}}>'
 
 def handle_tmp():
-    shutil.rmtree(TMP_FOLDER_LOCATION)
+    if path.exists(TMP_FOLDER_LOCATION):
+        shutil.rmtree(TMP_FOLDER_LOCATION)
     mkdir(TMP_FOLDER_LOCATION)
 
 def get_templates():
@@ -109,7 +110,7 @@ def call_cli():
     shutil.copytree(tmp_path, dest_path)
 
 
-if __name__ == '__main__':
-    call_cli()
+# if __name__ == '__main__':
+#     call_cli()
 
 #TODO: setup, install, tests and call as linux command, more print, progress
