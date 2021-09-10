@@ -13,3 +13,7 @@
 
 ## 2.0:
     1. Add regexp for folders.
+    2. Add for other projects not only for web.
+    3. add preinstallation steps and postinstallation steps.(as Setup and TearDown)
+    4. backward compatibility
+    5. 
