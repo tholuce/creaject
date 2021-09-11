@@ -1,7 +1,6 @@
-# create-react-component
-
+# create-project
 ## Description:
-> create-react-component creates project for creating scripts.
+> create-project creates project for creating scripts.
 
 ## Features:
 > creates new component forlder
