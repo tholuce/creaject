@@ -1,0 +1,4 @@
+isLocal: <true|false>
+remote: ''
+defaults: variables
+  - "asdasd": "qwdwqdwqd"

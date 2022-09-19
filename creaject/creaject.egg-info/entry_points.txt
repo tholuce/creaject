@@ -1,0 +1,3 @@
+[console_scripts]
+creaject = creaject.main:app
+

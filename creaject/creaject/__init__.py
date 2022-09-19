@@ -2,7 +2,7 @@ from os import path, getcwd, listdir, mkdir, walk
 import shutil
 import re
 
-
+#TODO: add for windows as well
 TMP_FOLDER_LOCATION = '/tmp/TEMP-templaterpp/'
 #TODO: make prettier
 VARIABLE_REGEXP_SEARCH_PATTERN = '<{{(?P<variable_name>\w+)}}>'
@@ -107,6 +107,9 @@ def call_cli():
     variables = get_values_for_variables(variable_names)
     evaluate_template(tmp_path, variables)
     dest_path = path.join(getcwd(), name)
+    #TODO: finish this dest path and add param to specify path
+    input(f'Do you want to create project in {dest_path}? (y/n): ')
+    
     shutil.copytree(tmp_path, dest_path)
 
 

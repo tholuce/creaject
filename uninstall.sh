@@ -1,5 +1,4 @@
 #!/bin/bash
 
-rm -rf /usr/src/createwebapp/
-rm -rf /usr/bin/create-web-app
-rm -rf /tmp/TEMP-templaterpp/
+# 1. Remove templates.
+# 1. pip3 uninstall.
