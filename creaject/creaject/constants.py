@@ -1,1 +1,4 @@
+
 VERSION = '1.1'
+
+TEMP_TEMPLATE_PATH = ''

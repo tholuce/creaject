@@ -1,6 +1,7 @@
+from creaject.constants import VERSION
 import click
 
 @click.command()
-@click.option('--version', default='0.1')
+@click.version_option(VERSION)
 def version():
-    click.echo('version: 0.1')
+    print(f'version: {VERSION}')

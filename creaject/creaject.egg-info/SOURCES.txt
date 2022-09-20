@@ -10,3 +10,4 @@ creaject.egg-info/entry_points.txt
 creaject.egg-info/top_level.txt
 creaject/cli/__init__.py
 creaject/cli/version.py
+creaject/cli/template/__init__.py

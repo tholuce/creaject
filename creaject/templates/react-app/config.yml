@@ -1,4 +1,5 @@
-isLocal: <true|false>
+isLocal: true
 remote: ''
-defaults: variables
-  - "asdasd": "qwdwqdwqd"
+variables:
+  name: "name2"
+  file: "file2"
