@@ -10,10 +10,9 @@ create-project:
 
 - templates(folder):
   - config.yml
-  - before(folder with multiple scripts)
-  - after(folder with multiple scripts)
+  - before(folder with multiple scripts)(later)
+  - after(folder with multiple scripts)(later)
   - project_files(folder):
-  -
 
 before/after entry point
 
@@ -37,7 +36,7 @@ For Templates use Jinja2.
     5. import <path to template dir or url> - imports template from remote or local dir
     6. --use-defaults - if all defaults provided in config.yml then okay
     7. --path <path> - specified path to create project or inner in folder.
-    8.  validate - validate template
+    8. validate <path> - validate template
 
 ### Workflow:
 
@@ -53,4 +52,6 @@ For Templates use Jinja2.
 1. https://pybit.es/articles/how-to-package-and-deploy-cli-apps/
 
 ### Features:
-1. before and after scripts.
+1. before and after scripts. For example: git init.
+2. Add tests.
+3. 
