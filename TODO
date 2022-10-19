@@ -1,0 +1,10 @@
+1. Add comments
+2. Add tests
+3. Add documentation
+4. template folder dedicated from scripts.
+5. get template default scripts from git
+6. installation process
+7. create installer
+8. download / upload to git
+9. git actions to build package
+10. setup and teardown scripts on template.

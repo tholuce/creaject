@@ -1,8 +1,8 @@
-# Name: creaject
+# Name: Creaject
 
 ## Description:
 
-> create-project creates project from templates.
+> creaject creates project from templates.
 
 ## Architecture
 
@@ -10,8 +10,6 @@ create-project:
 
 - templates(folder):
   - config.yml
-  - before(folder with multiple scripts)(next version)
-  - after(folder with multiple scripts)(next version)
   - project_files(folder):
 
 before/after entry point
@@ -30,13 +28,15 @@ For Templates use Jinja2.
 ### CLI:
 
     1. version - get version for create-project
-    2. list - list of templates
-    3. new - generates project from specified template
-    4. export <path> - path should be specified.
-    5. import <path to template dir or url> - imports template from remote or local dir
-    6. --use-defaults - if all defaults provided in config.yml then okay
-    7. --path <path> - specified path to create project or inner in folder.
-    8. validate <path> - validate template folder
+    2. new - generates project from specified template
+       1.  --use-defaults - if all defaults provided in config.yml then okay
+    3. template
+       1. list - list of templates
+       2. export <template name or emty>
+       3. import <path to template dir or url> - imports template from remote or local dir
+    
+    4. --path <path> - specified path to create project or inner in folder.
+    5. validate <path> - validate template folder
 
 ### Workflow:
 

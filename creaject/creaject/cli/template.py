@@ -1,25 +1,16 @@
 from os import listdir, path
 from shutil import copytree
-from turtle import color
 import click
 from rich import print as rprint
 from rich.tree import Tree
-from creaject.template import choose_template
-from creaject.errors import TemplateValidationError
-from creaject.validators import validators_list
+from creaject.template import choose_template, is_template_folder_valid
 
 
 @click.command('validate')
 @click.pass_context
 def validate_template(ctx):
-    try:
-        templ_validation_path = ctx.obj['destPath']
-        rprint(f"Validating template under path: {templ_validation_path}")
-        for validator in validators_list:
-            validator(templ_validation_path)
-        rprint('Template validation completed: Everything is okay')
-    except (TemplateValidationError, FileNotFoundError) as exception:
-        rprint('[red]' + str(exception))
+    templ_validation_path = ctx.obj['destPath']
+    is_template_folder_valid(templ_validation_path)
 
 
 @click.command('list')
@@ -37,24 +28,27 @@ def list_template(ctx):
 @click.command('import')
 @click.pass_context
 def import_template(ctx):
-    current_folder = ctx.obj['destPath']
-    template_name = path.basename(current_folder)
+    templ_src_folder = ctx.obj['destPath']
+    if not is_template_folder_valid(templ_src_folder):
+        return
+    template_name = path.basename(templ_src_folder)
     template_root_location = ctx.obj['templatePath']
-    copytree(current_folder, path.join(template_root_location, template_name))
+    copytree(templ_src_folder, path.join(
+        template_root_location, template_name))
 
 
 @click.command('export')
 @click.argument('name', required=False)
 @click.pass_context
 def export_template(ctx, name: str = ''):
-    templates_root_folder_path = ctx.obj['templatePath']
-    template_folder_path = choose_template(
-        templates_root_folder_path) if not name else path.join(ctx.obj['templatePath'], name)
     try:
+        templates_root_folder_path = ctx.obj['templatePath']
+        template_folder_path = choose_template(
+            templates_root_folder_path) if not name else path.join(ctx.obj['templatePath'], name)
         copytree(template_folder_path, ctx.obj['destPath'], dirs_exist_ok=True)
         rprint('[green]Template exported successfully')
-    except Exception as e:
-        rprint(e)
+    except FileNotFoundError as error:
+        rprint('[red]' + str(error))
 
 
 @ click.group('template')
