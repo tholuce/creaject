@@ -10,8 +10,8 @@ create-project:
 
 - templates(folder):
   - config.yml
-  - before(folder with multiple scripts)(later)
-  - after(folder with multiple scripts)(later)
+  - before(folder with multiple scripts)(next version)
+  - after(folder with multiple scripts)(next version)
   - project_files(folder):
 
 before/after entry point
@@ -36,7 +36,7 @@ For Templates use Jinja2.
     5. import <path to template dir or url> - imports template from remote or local dir
     6. --use-defaults - if all defaults provided in config.yml then okay
     7. --path <path> - specified path to create project or inner in folder.
-    8. validate <path> - validate template
+    8. validate <path> - validate template folder
 
 ### Workflow:
 
@@ -54,4 +54,4 @@ For Templates use Jinja2.
 ### Features:
 1. before and after scripts. For example: git init.
 2. Add tests.
-3. 
+3. Upgrade templates commands.

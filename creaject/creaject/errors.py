@@ -1,0 +1,4 @@
+
+
+class TemplateValidationError(Exception):
+    pass

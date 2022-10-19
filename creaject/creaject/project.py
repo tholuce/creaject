@@ -2,6 +2,7 @@ from os import walk, makedirs
 from os.path import join, relpath
 from jinja2 import Template
 
+
 class ProjectFactory:
     def __init__(self, ctx, template_path, dest_path) -> None:
         self._context = ctx
@@ -14,8 +15,9 @@ class ProjectFactory:
         for root_path, _, filesnames, in walk(project_files):
             for filename in filesnames:
                 absolute_templ_path = join(root_path, filename)
-                dest_path_dir = join(self._dest_path, relpath(project_files, root_path))
-                makedirs(dest_path_dir, exist_ok = True)
+                dest_path_dir = join(
+                    self._dest_path, relpath(project_files, root_path))
+                makedirs(dest_path_dir, exist_ok=True)
                 absolute_dest_path = join(dest_path_dir, filename)
                 self._handle_template(absolute_templ_path, absolute_dest_path)
 
@@ -24,4 +26,3 @@ class ProjectFactory:
             template = Template(templ_file.read())
             with open(dest_file_path, 'w', encoding='utf-8') as dest_file:
                 dest_file.write(template.render(self._variables))
-        
