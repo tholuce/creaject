@@ -29,7 +29,6 @@ For Templates use Jinja2.
 
     1. version - get version for create-project
     2. new - generates project from specified template
-       1.  --use-defaults - if all defaults provided in config.yml then okay
     3. template
        1. list - list of templates
        2. export <template name or emty>

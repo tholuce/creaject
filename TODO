@@ -8,3 +8,6 @@
 8. download / upload to git
 9. git actions to build package
 10. setup and teardown scripts on template.
+11. download templates from git selectively
+12. remove templates
+13. Need to make common options
