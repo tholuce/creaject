@@ -1,3 +1,4 @@
+0. Use argparse instead of click to cover common options.
 1. Add comments
 2. Add tests
 3. Add documentation
