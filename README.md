@@ -18,7 +18,7 @@ before/after entry point
 context to pass data among scripts and data about where path
 For Templates use Jinja2. 
 
-## Libraries:
+## Libraries
 
 1. click - module for cli.
 2. rich - https://github.com/Textualize/rich
@@ -26,19 +26,25 @@ For Templates use Jinja2.
 4. pyyaml-6.0
 5. Jinja2 - https://pypi.org/project/Jinja2/
 
-### CLI:
+### CLI
 
     1. version - get version for create-project
     2. new - generates project from specified template
     3. template
-       1. list - list of templates
-       2. export <template name or emty>
-       3. import <path to template dir or url> - imports template from remote or local dir
-    
-    4. --path <path> - specified path to create project or inner in folder.
-    5. validate <path> - validate template folder
+       1. init - creates new template
+       2. list - list of templates
+       3. export <template name or empty> (To which directory I should export?)
+       4. import <local path to template dir or a git url> - imports template from remote or local dir (where I should import?)
+       5. validate <path> - validate template folder specified path to create project or inner in folder.
 
-### Workflow:
+### CLI use cases
+1. creaject new - create new project from template (specified path to create project or inner in folder.)
+2. creaject template list
+3. creaject template import  <--path or default(current working directory)> 
+4. creaject template export <--path  default(current working directory)>
+5. creaject template validate  <--path  default(current working directory)>
+
+### Workflow
 
 1. Create a project with some additional setup and teardown.
 2. specify info in variables and config.yml
