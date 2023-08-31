@@ -1,60 +1,48 @@
-from os import listdir, path
-from shutil import copytree
+from os import getcwd, mkdir
+from os.path import join as pathjoin
 import click
 from rich import print as rprint
 from rich.tree import Tree
-from creaject.template import choose_template, is_template_folder_valid
+from creaject.template import is_template_folder_valid, get_template_list, import_template, export_template
+from creaject.shortcuts import path_option
 
-
+#TODO: add testing
 @click.command('validate')
-@click.pass_context
-def validate_template(ctx):
-    templ_validation_path = ctx.obj['destPath']
-    is_template_folder_valid(templ_validation_path)
-
-
+@click.option('--p', '--path')
+def validate_template(path):
+    is_template_folder_valid(path or getcwd())
+        
 @click.command('list')
-@click.pass_context
-def list_template(ctx):
+def list_templates():
     tree = Tree("Templates")
-    # TODO: check if templates dir exists
-    dir_templates = listdir(ctx.obj['templatePath'])
-    for index, template_name in enumerate(dir_templates):
+    for index, template_name in enumerate(get_template_list()):
         tree.add(f'{index + 1}. {template_name}')
     rprint(tree)
     print()
 
+@click.command('init')
+@path_option # TODO: test it and change everywhere if works
+def init_template(path):
+    mkdir(pathjoin(path, 'project_files'))
+    with open(pathjoin(path, 'config.yml'), ) as config_file:
+        config_file.write('variables:')    
 
 @click.command('import')
-@click.pass_context
-def import_template(ctx):
-    templ_src_folder = ctx.obj['destPath']
-    if not is_template_folder_valid(templ_src_folder):
-        return
-    template_name = path.basename(templ_src_folder)
-    template_root_location = ctx.obj['templatePath']
-    copytree(templ_src_folder, path.join(
-        template_root_location, template_name))
-
+@click.option('--p', '--path')
+def import_template(path):
+   import_template(path or getcwd())
 
 @click.command('export')
-@click.argument('name', required=False)
-@click.pass_context
-def export_template(ctx, name: str = ''):
-    try:
-        templates_root_folder_path = ctx.obj['templatePath']
-        template_folder_path = choose_template(
-            templates_root_folder_path) if not name else path.join(ctx.obj['templatePath'], name)
-        copytree(template_folder_path, ctx.obj['destPath'], dirs_exist_ok=True)
-        rprint('[green]Template exported successfully')
-    except FileNotFoundError as error:
-        rprint('[red]' + str(error))
+@click.option('--path')
+def export_template(path):
+    export_template(path)
 
-
-@ click.group('template')
+@click.group('template')
 def template_cli_group():
     pass
 
 
 template_cli_group.commands = {"import": import_template,
-                               "export": export_template, "list": list_template, "validate": validate_template}
+                               "export": export_template,
+                               "list": list_templates,
+                               "validate": validate_template}

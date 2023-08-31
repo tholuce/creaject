@@ -1,14 +1,8 @@
-0. Use argparse instead of click to cover common options.
 1. Add comments
 2. Add tests
 3. Add documentation
-4. template folder dedicated from scripts.
-5. get template default scripts from git
+4. Update and check creaject template commands
 6. installation process
+7. uninstallation process
 7. create installer
-8. download / upload to git
-9. git actions to build package
-10. setup and teardown scripts on template.
-11. download templates from git selectively
-12. remove templates
-13. Need to make common options
+8. git actions to build package
